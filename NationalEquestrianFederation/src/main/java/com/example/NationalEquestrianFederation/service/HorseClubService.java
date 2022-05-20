@@ -23,4 +23,11 @@ public class HorseClubService implements IHorseClubService {
     public HorseClub addHorseClub(HorseClub horseClub) {
         return horseClubRepository.save(horseClub);
     }
+
+    @Override
+    public void editHorseClub(HorseClub horseClub) {
+        horseClubRepository.editHorseClub(horseClub.getId(), horseClub.getName(), horseClub.getPhone(),
+                horseClub.getAddress(), horseClub.getEmail(), horseClub.getDescription());
+    }
+
 }

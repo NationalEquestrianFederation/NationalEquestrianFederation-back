@@ -18,14 +18,20 @@ public class HorseClubController {
 
     private final IHorseClubService horseClubService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<HorseClub>> getHorseClubs(@RequestParam String name) {
         return new ResponseEntity<>(horseClubService.findAll(name), HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<HorseClub> addHorseClub(@RequestBody HorseClub horseClub) {
         return new ResponseEntity<>(horseClubService.addHorseClub(horseClub), HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<String> editHorseClub(@RequestBody HorseClub horseClub) {
+        horseClubService.editHorseClub(horseClub);
+        return new ResponseEntity<>("Successfully edited", HttpStatus.OK);
     }
 
 }

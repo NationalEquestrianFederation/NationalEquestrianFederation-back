@@ -10,4 +10,6 @@ public interface IHorseClubService {
 
     HorseClub addHorseClub(HorseClub horseClub);
 
+    void editHorseClub(HorseClub horseClub);
+
 }
