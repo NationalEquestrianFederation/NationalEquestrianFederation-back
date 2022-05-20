@@ -9,12 +9,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "competitors")
+@Table(name = "riders")
 @Data
-public class Competitor {
+public class Rider {
 
     @Id
-    @Column(name = "competitor_id", nullable = false)
+    @Column(name = "rider_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
@@ -34,6 +34,9 @@ public class Competitor {
 
     @Column(name = "licence")
     @Getter @Setter private Licence licence;
+
+    @Column(name = "horse_club")
+    @Getter @Setter private Integer horseClub;
 
 
 }
