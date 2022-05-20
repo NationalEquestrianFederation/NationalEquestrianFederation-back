@@ -30,4 +30,8 @@ public class HorseClub {
     @Column(name = "email")
     @Getter @Setter private String email;
 
+    @Column(name = "owner")
+    @Getter @Setter private Integer owner;
+
+
 }

@@ -22,7 +22,7 @@ public class NewsController {
     private final INewsService newsService;
 
     @GetMapping()
-    public ResponseEntity<List<News>> getNationalFederationNews(@RequestParam String newsType) {
+    public ResponseEntity<List<News>> getNews(@RequestParam String newsType) {
         NewsType type = NewsType.valueOf(newsType);
         return new ResponseEntity<>(newsService.findNewsByType(type), HttpStatus.OK);
     }
