@@ -20,7 +20,12 @@ public class RiderController {
 
     @GetMapping
     public ResponseEntity<List<Rider>> getRiders(@RequestParam Integer horseClub) {
-        return  new ResponseEntity<>(riderService.getRiders(horseClub), HttpStatus.OK);
+        return new ResponseEntity<>(riderService.getRiders(horseClub), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Rider> addRider(@RequestBody Rider rider) {
+        return new ResponseEntity<>(riderService.addRider(rider), HttpStatus.CREATED);
     }
 
 }

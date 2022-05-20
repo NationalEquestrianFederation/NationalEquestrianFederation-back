@@ -16,6 +16,11 @@ public class RiderService implements IRiderService {
 
     @Override
     public List<Rider> getRiders(Integer horseClub) {
-        return riderRepository.finRidersByHorseClub(horseClub);
+        return riderRepository.findRidersByHorseClub(horseClub);
+    }
+
+    @Override
+    public Rider addRider(Rider rider) {
+        return riderRepository.save(rider);
     }
 }

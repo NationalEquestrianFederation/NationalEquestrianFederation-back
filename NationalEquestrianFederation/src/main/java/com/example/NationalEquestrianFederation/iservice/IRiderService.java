@@ -8,4 +8,6 @@ public interface IRiderService {
 
     List<Rider> getRiders(Integer horseClub);
 
+    Rider addRider(Rider rider);
+
 }
