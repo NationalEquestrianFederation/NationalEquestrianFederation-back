@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface INewsRepository extends JpaRepository<News, Integer> {
 
-    @Query("SELECT n FROM News n WHERE n.newsType = ?1")
+    @Query("SELECT n FROM News n WHERE n.newsType = ?1 ORDER BY n.date")
     List<News> findNewsByType(NewsType newsType);
 
 }

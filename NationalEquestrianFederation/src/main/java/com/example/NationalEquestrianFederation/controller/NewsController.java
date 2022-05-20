@@ -1,6 +1,8 @@
 package com.example.NationalEquestrianFederation.controller;
 
+import com.example.NationalEquestrianFederation.dto.NewsDto;
 import com.example.NationalEquestrianFederation.iservice.INewsService;
+import com.example.NationalEquestrianFederation.mapper.NewsMapper;
 import com.example.NationalEquestrianFederation.model.News;
 import com.example.NationalEquestrianFederation.model.enums.NewsType;
 import lombok.AllArgsConstructor;
@@ -23,6 +25,12 @@ public class NewsController {
     public ResponseEntity<List<News>> getNationalFederationNews(@RequestParam String newsType) {
         NewsType type = NewsType.valueOf(newsType);
         return new ResponseEntity<>(newsService.findNewsByType(type), HttpStatus.OK);
+    }
+
+    @PostMapping()
+    public ResponseEntity<News> addNews(@RequestBody NewsDto newNews) {
+        News news = NewsMapper.convertToNews(newNews);
+        return new ResponseEntity<>(newsService.addNews(news), HttpStatus.CREATED);
     }
 
 }

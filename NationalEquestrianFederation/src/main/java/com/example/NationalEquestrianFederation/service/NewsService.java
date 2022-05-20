@@ -7,6 +7,7 @@ import com.example.NationalEquestrianFederation.repository.INewsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,5 +19,10 @@ public class NewsService implements INewsService {
     @Override
     public List<News> findNewsByType(NewsType newsType) {
         return newsRepository.findNewsByType(newsType);
+    }
+
+    @Override
+    public News addNews(News newNews) {
+        return newsRepository.save(newNews);
     }
 }
