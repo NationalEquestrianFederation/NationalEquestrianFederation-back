@@ -8,4 +8,6 @@ public interface IHorseClubService {
 
     List<HorseClub> findAll(String name);
 
+    HorseClub addHorseClub(HorseClub horseClub);
+
 }

@@ -23,4 +23,9 @@ public class HorseClubController {
         return new ResponseEntity<>(horseClubService.findAll(name), HttpStatus.OK);
     }
 
+    @PostMapping()
+    public ResponseEntity<HorseClub> addHorseClub(@RequestBody HorseClub horseClub) {
+        return new ResponseEntity<>(horseClubService.addHorseClub(horseClub), HttpStatus.CREATED);
+    }
+
 }

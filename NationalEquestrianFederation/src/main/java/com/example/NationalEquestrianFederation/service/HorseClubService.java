@@ -18,4 +18,9 @@ public class HorseClubService implements IHorseClubService {
     public List<HorseClub> findAll(String name) {
         return horseClubRepository.findAll(name);
     }
+
+    @Override
+    public HorseClub addHorseClub(HorseClub horseClub) {
+        return horseClubRepository.save(horseClub);
+    }
 }
