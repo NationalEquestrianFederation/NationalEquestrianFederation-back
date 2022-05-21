@@ -12,4 +12,6 @@ public interface ITrainerService {
 
     void deletedTrainer(Integer trainerId);
 
+    void editTrainer(Trainer trainer);
+
 }

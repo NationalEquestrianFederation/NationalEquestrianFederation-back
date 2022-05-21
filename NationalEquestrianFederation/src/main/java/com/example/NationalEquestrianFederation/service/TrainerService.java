@@ -28,4 +28,10 @@ public class TrainerService implements ITrainerService {
     public void deletedTrainer(Integer trainerId) {
         trainerRepository.deleteTrainer(trainerId);
     }
+
+    @Override
+    public void editTrainer(Trainer trainer) {
+        trainerRepository.editTrainer(trainer.getId(), trainer.getName(), trainer.getSurname(),
+                trainer.getDateOfBirth(), trainer.getGender());
+    }
 }

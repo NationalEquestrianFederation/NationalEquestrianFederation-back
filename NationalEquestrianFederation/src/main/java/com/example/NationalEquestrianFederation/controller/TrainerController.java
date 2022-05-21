@@ -34,4 +34,10 @@ public class TrainerController {
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<String> editTrainer(@RequestBody Trainer trainer) {
+        trainerService.editTrainer(trainer);
+        return new ResponseEntity<>("Successfully edited", HttpStatus.OK);
+    }
+
 }
