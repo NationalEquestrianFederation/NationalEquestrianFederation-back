@@ -10,4 +10,6 @@ public interface IRidingSchoolOfferService {
 
     RidingSchoolOffer addRidingSchoolOffer(RidingSchoolOffer offer);
 
+    void deleteRidingSchoolOffer(Integer offerId);
+
 }

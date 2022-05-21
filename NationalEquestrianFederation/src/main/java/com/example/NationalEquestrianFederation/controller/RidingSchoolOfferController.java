@@ -28,4 +28,10 @@ public class RidingSchoolOfferController {
         return new ResponseEntity<>(offerService.addRidingSchoolOffer(offer), HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteRidingSchoolOffer(@PathVariable Integer id) {
+        offerService.deleteRidingSchoolOffer(id);
+        return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
+    }
+
 }

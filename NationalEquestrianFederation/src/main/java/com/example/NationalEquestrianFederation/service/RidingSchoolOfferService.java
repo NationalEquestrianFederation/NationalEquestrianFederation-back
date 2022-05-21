@@ -23,4 +23,9 @@ public class RidingSchoolOfferService implements IRidingSchoolOfferService {
     public RidingSchoolOffer addRidingSchoolOffer(RidingSchoolOffer offer) {
         return offerRepository.save(offer);
     }
+
+    @Override
+    public void deleteRidingSchoolOffer(Integer offerId) {
+        offerRepository.deleteRidingSchoolOffer(offerId);
+    }
 }
