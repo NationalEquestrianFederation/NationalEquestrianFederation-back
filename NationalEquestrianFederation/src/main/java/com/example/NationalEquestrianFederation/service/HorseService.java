@@ -28,4 +28,10 @@ public class HorseService implements IHorseService {
     public void deleteHorse(Integer horseId) {
         horseRepository.deleteHorse(horseId);
     }
+
+    @Override
+    public void editHorse(Horse horse) {
+        horseRepository.editHorse(horse.getId(), horse.getName(), horse.getYearOfBirth(),
+                horse.getOwner(), horse.getGender());
+    }
 }

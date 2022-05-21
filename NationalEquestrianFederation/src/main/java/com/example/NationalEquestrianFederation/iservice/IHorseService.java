@@ -12,4 +12,6 @@ public interface IHorseService {
 
     void deleteHorse(Integer horseId);
 
+    void editHorse(Horse horse);
+
 }

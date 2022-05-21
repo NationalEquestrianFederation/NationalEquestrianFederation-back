@@ -34,4 +34,10 @@ public class HorseController {
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<String> editHorse(@RequestBody Horse horse) {
+        horseService.editHorse(horse);
+        return new ResponseEntity<>("Successfully edited", HttpStatus.OK);
+    }
+
 }
