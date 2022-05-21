@@ -25,7 +25,7 @@ public class HorseController {
 
     @PostMapping
     public ResponseEntity<Horse> addHorse(@RequestBody Horse horse) {
-        return new ResponseEntity<>(horseService.addHorse(horse), HttpStatus.OK);
+        return new ResponseEntity<>(horseService.addHorse(horse), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
