@@ -1,0 +1,11 @@
+package com.example.NationalEquestrianFederation.iservice;
+
+import com.example.NationalEquestrianFederation.model.Trainer;
+
+import java.util.List;
+
+public interface ITrainerService {
+
+    List<Trainer> getTrainers(Integer horseClub);
+
+}
