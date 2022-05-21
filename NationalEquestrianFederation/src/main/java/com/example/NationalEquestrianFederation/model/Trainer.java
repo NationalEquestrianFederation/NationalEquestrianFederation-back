@@ -31,4 +31,10 @@ public class Trainer {
     @Column(name = "gender")
     @Getter @Setter private Gender gender;
 
+    @Column(name = "horse_club")
+    @Getter @Setter private Integer horseClub;
+
+    @Column(name = "is_deleted")
+    @Getter @Setter private boolean isDeleted;
+
 }
