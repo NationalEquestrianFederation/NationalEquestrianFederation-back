@@ -23,4 +23,9 @@ public class RiderService implements IRiderService {
     public Rider addRider(Rider rider) {
         return riderRepository.save(rider);
     }
+
+    @Override
+    public void deleteRider(Integer riderId) {
+        riderRepository.deleteRider(riderId);
+    }
 }

@@ -28,4 +28,10 @@ public class RiderController {
         return new ResponseEntity<>(riderService.addRider(rider), HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteRider(@PathVariable Integer id) {
+        riderService.deleteRider(id);
+        return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
+    }
+
 }

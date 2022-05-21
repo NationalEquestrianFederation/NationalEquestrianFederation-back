@@ -38,5 +38,8 @@ public class Rider {
     @Column(name = "horse_club")
     @Getter @Setter private Integer horseClub;
 
+    @Column(name = "is_deleted")
+    @Getter @Setter private boolean isDeleted = false;
+
 
 }

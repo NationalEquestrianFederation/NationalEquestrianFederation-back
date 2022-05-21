@@ -10,4 +10,6 @@ public interface IRiderService {
 
     Rider addRider(Rider rider);
 
+    void deleteRider(Integer riderId);
+
 }
