@@ -10,4 +10,6 @@ public interface ICompetitionService {
 
     List<Competition> getCompetitionsByDate(String date);
 
+    Competition addCompetition(Competition competition);
+
 }

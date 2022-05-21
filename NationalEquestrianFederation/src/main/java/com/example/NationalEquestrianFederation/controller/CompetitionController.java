@@ -28,4 +28,9 @@ public class CompetitionController {
         return new ResponseEntity<>(competitionService.getCompetitionsByDate(date), HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<Competition> addCompetition(@RequestBody Competition competition) {
+        return new ResponseEntity<>(competitionService.addCompetition(competition), HttpStatus.CREATED);
+    }
+
 }

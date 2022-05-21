@@ -23,4 +23,9 @@ public class CompetitionService implements ICompetitionService {
     public List<Competition> getCompetitionsByDate(String date) {
         return competitionRepository.getCompetitionsByDate(date);
     }
+
+    @Override
+    public Competition addCompetition(Competition competition) {
+        return competitionRepository.save(competition);
+    }
 }
