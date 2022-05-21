@@ -33,7 +33,10 @@ public class RidingSchoolOffer {
     @Column(name = "description")
     @Getter @Setter private String description;
 
-    @Column(name = "horse_club_id")
+    @Column(name = "horse_club")
     @Getter @Setter private Integer horseClub;
+
+    @Column(name = "is_deleted")
+    @Getter @Setter private boolean isDeleted;
 
 }
