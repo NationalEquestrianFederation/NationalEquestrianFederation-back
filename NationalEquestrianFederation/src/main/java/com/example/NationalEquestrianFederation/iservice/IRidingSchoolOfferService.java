@@ -12,4 +12,6 @@ public interface IRidingSchoolOfferService {
 
     void deleteRidingSchoolOffer(Integer offerId);
 
+    void editRidingSchoolOffer(RidingSchoolOffer offer);
+
 }

@@ -34,4 +34,10 @@ public class RidingSchoolOfferController {
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<String> editRidingSchoolOffer(@RequestBody RidingSchoolOffer offer) {
+        offerService.editRidingSchoolOffer(offer);
+        return new ResponseEntity<>("Successfully edited", HttpStatus.OK);
+    }
+
 }

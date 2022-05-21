@@ -28,4 +28,10 @@ public class RidingSchoolOfferService implements IRidingSchoolOfferService {
     public void deleteRidingSchoolOffer(Integer offerId) {
         offerRepository.deleteRidingSchoolOffer(offerId);
     }
+
+    @Override
+    public void editRidingSchoolOffer(RidingSchoolOffer offer) {
+        offerRepository.editRidingSchoolOffer(offer.getId(), offer.getName(), offer.getPrice(), offer.getStartDate(),
+                offer.getEndDate(), offer.getDescription());
+    }
 }

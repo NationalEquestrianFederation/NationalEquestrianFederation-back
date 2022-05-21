@@ -18,4 +18,11 @@ public interface IRidingSchoolOfferRepository extends JpaRepository<RidingSchool
     @Transactional
     void deleteRidingSchoolOffer(Integer offerId);
 
+    @Query("UPDATE RidingSchoolOffer o " +
+            "SET  o.name = ?2, o.price = ?3, o.startDate = ?4, o.endDate = ?5, o.description = ?6 " +
+            "WHERE o.id = ?1")
+    @Modifying
+    @Transactional
+    void editRidingSchoolOffer(Integer offerId, String name, double price, String startDate, String endDate, String description);
+
 }
