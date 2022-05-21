@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Horse {
 
     @Id
-    @Column(name = "competitor_id", nullable = false)
+    @Column(name = "horse_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
@@ -30,5 +30,11 @@ public class Horse {
 
     @Column(name = "gender")
     @Getter @Setter private HorseGender gender;
+
+    @Column(name = "horse_club")
+    @Getter @Setter private Integer horseClub;
+
+    @Column(name= "is_deleted")
+    @Getter @Setter private boolean isDeleted;
 
 }
