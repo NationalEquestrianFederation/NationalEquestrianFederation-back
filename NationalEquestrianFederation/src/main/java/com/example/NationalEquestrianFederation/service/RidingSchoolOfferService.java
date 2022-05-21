@@ -18,4 +18,9 @@ public class RidingSchoolOfferService implements IRidingSchoolOfferService {
     public List<RidingSchoolOffer> getRidingSchoolOffers(Integer horseClub) {
         return offerRepository.findOffersByHorseClub(horseClub);
     }
+
+    @Override
+    public RidingSchoolOffer addRidingSchoolOffer(RidingSchoolOffer offer) {
+        return offerRepository.save(offer);
+    }
 }

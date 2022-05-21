@@ -23,4 +23,9 @@ public class RidingSchoolOfferController {
         return new ResponseEntity<>(offerService.getRidingSchoolOffers(horseClub), HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<RidingSchoolOffer> addRidingSchoolOffer(@RequestBody RidingSchoolOffer offer){
+        return new ResponseEntity<>(offerService.addRidingSchoolOffer(offer), HttpStatus.CREATED);
+    }
+
 }

@@ -8,4 +8,6 @@ public interface IRidingSchoolOfferService {
 
     List<RidingSchoolOffer> getRidingSchoolOffers(Integer horseClub);
 
+    RidingSchoolOffer addRidingSchoolOffer(RidingSchoolOffer offer);
+
 }
