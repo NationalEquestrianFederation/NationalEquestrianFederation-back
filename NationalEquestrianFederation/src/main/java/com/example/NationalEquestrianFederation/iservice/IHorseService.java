@@ -8,4 +8,6 @@ public interface IHorseService {
 
     List<Horse> getHorses(Integer horseClub);
 
+    Horse addHorse(Horse horse);
+
 }

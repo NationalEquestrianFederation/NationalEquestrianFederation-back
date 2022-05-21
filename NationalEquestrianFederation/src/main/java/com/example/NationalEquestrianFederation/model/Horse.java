@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Horse {
 
     @Id
-    @Column(name = "competitor_id", nullable = false)
+    @Column(name = "horse_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter

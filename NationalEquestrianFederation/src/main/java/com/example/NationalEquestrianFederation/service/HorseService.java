@@ -10,12 +10,17 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class HorseClub implements IHorseService {
+public class HorseService implements IHorseService {
 
     private final IHorseRepository horseRepository;
 
     @Override
     public List<Horse> getHorses(Integer horseClub) {
         return horseRepository.findHorsesByHorseClub(horseClub);
+    }
+
+    @Override
+    public Horse addHorse(Horse horse) {
+        return horseRepository.save(horse);
     }
 }

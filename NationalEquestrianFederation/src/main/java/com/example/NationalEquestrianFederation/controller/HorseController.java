@@ -23,4 +23,9 @@ public class HorseController {
         return new ResponseEntity<>(horseService.getHorses(horseClub), HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<Horse> addHorse(@RequestBody Horse horse) {
+        return new ResponseEntity<>(horseService.addHorse(horse), HttpStatus.OK);
+    }
+
 }
