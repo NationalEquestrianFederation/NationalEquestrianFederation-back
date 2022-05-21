@@ -28,4 +28,10 @@ public class RiderService implements IRiderService {
     public void deleteRider(Integer riderId) {
         riderRepository.deleteRider(riderId);
     }
+
+    @Override
+    public void editRider(Rider rider) {
+        riderRepository.editRider(rider.getId(), rider.getName(), rider.getSurname() , rider.getDateOfBirth(),
+                rider.getGender(), rider.getLicence());
+    }
 }

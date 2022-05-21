@@ -34,4 +34,10 @@ public class RiderController {
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<String> editRider(@RequestBody Rider rider) {
+        riderService.editRider(rider);
+        return new ResponseEntity<>("Successfully edited", HttpStatus.OK);
+    }
+
 }

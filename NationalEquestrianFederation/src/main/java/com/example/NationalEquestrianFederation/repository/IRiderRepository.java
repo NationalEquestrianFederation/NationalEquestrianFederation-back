@@ -1,6 +1,8 @@
 package com.example.NationalEquestrianFederation.repository;
 
 import com.example.NationalEquestrianFederation.model.Rider;
+import com.example.NationalEquestrianFederation.model.enums.Gender;
+import com.example.NationalEquestrianFederation.model.enums.Licence;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,5 +19,12 @@ public interface IRiderRepository extends JpaRepository<Rider, Integer> {
     @Modifying
     @Transactional
     void deleteRider(Integer riderId);
+
+    @Query("UPDATE Rider r " +
+            "SET r.name = ?2, r.surname = ?3, r.dateOfBirth = ?4, r.gender = ?5, r.licence = ?6 " +
+            "WHERE r.id = ?1")
+    @Modifying
+    @Transactional
+    void editRider(Integer id, String name, String surname, String dateOfBirth, Gender gender, Licence licence);
 
 }

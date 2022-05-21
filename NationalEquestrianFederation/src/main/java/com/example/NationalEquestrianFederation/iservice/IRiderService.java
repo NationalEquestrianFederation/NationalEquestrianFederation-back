@@ -12,4 +12,6 @@ public interface IRiderService {
 
     void deleteRider(Integer riderId);
 
+    void editRider(Rider rider);
+
 }
