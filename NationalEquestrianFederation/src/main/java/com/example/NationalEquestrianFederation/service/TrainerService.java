@@ -18,4 +18,9 @@ public class TrainerService implements ITrainerService {
     public List<Trainer> getTrainers(Integer horseClub) {
         return trainerRepository.findTrainersByHorseClub(horseClub);
     }
+
+    @Override
+    public Trainer addTrainer(Trainer trainer) {
+        return trainerRepository.save(trainer);
+    }
 }

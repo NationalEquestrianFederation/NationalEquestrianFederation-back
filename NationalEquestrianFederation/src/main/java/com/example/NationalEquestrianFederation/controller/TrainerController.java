@@ -23,4 +23,9 @@ public class TrainerController {
         return new ResponseEntity<>(trainerService.getTrainers(horseClub), HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<Trainer> addTrainer(@RequestBody Trainer trainer) {
+        return new ResponseEntity<>(trainerService.addTrainer(trainer), HttpStatus.CREATED);
+    }
+
 }

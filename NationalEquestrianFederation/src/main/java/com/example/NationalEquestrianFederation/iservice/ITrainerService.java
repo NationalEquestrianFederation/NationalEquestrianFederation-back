@@ -8,4 +8,6 @@ public interface ITrainerService {
 
     List<Trainer> getTrainers(Integer horseClub);
 
+    Trainer addTrainer(Trainer trainer);
+
 }
