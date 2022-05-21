@@ -10,4 +10,6 @@ public interface ITrainerService {
 
     Trainer addTrainer(Trainer trainer);
 
+    void deletedTrainer(Integer trainerId);
+
 }

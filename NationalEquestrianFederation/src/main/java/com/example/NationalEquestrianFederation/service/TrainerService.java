@@ -23,4 +23,9 @@ public class TrainerService implements ITrainerService {
     public Trainer addTrainer(Trainer trainer) {
         return trainerRepository.save(trainer);
     }
+
+    @Override
+    public void deletedTrainer(Integer trainerId) {
+        trainerRepository.deleteTrainer(trainerId);
+    }
 }

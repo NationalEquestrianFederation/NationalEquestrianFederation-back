@@ -28,4 +28,10 @@ public class TrainerController {
         return new ResponseEntity<>(trainerService.addTrainer(trainer), HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTrainer(@PathVariable Integer id) {
+        trainerService.deletedTrainer(id);
+        return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
+    }
+
 }
