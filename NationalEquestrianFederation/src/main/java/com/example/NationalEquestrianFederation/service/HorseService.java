@@ -23,4 +23,9 @@ public class HorseService implements IHorseService {
     public Horse addHorse(Horse horse) {
         return horseRepository.save(horse);
     }
+
+    @Override
+    public void deleteHorse(Integer horseId) {
+        horseRepository.deleteHorse(horseId);
+    }
 }

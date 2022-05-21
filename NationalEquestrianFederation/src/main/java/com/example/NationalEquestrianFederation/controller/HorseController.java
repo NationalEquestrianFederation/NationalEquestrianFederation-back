@@ -28,4 +28,10 @@ public class HorseController {
         return new ResponseEntity<>(horseService.addHorse(horse), HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteHorse(@PathVariable Integer id) {
+        horseService.deleteHorse(id);
+        return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
+    }
+
 }

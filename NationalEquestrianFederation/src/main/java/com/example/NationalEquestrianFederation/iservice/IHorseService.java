@@ -10,4 +10,6 @@ public interface IHorseService {
 
     Horse addHorse(Horse horse);
 
+    void deleteHorse(Integer horseId);
+
 }
