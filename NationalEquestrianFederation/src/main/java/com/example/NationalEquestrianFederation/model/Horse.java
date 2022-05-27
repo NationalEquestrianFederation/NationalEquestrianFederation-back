@@ -31,8 +31,9 @@ public class Horse {
     @Column(name = "gender")
     @Getter @Setter private HorseGender gender;
 
-    @Column(name = "horse_club")
-    @Getter @Setter private Integer horseClub;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "horse_club", referencedColumnName = "horse_club_id")
+    @Getter @Setter private HorseClub horseClub;
 
     @Column(name= "is_deleted")
     @Getter @Setter private boolean isDeleted;

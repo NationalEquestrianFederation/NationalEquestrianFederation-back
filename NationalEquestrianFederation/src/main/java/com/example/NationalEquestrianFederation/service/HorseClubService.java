@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -17,6 +18,11 @@ public class HorseClubService implements IHorseClubService {
     @Override
     public List<HorseClub> findAll(String name) {
         return horseClubRepository.findAll(name);
+    }
+
+    @Override
+    public Optional<HorseClub> findById(Integer horseClubId) {
+        return horseClubRepository.findById(horseClubId);
     }
 
     @Override

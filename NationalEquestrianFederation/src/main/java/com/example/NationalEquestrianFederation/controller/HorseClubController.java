@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/horseClubs", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -21,6 +22,11 @@ public class HorseClubController {
     @GetMapping
     public ResponseEntity<List<HorseClub>> getHorseClubs(@RequestParam String name) {
         return new ResponseEntity<>(horseClubService.findAll(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<HorseClub>> getHorseClubById(@PathVariable Integer id) {
+        return new ResponseEntity<>(horseClubService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping
