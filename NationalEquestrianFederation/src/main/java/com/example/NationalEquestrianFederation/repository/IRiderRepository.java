@@ -1,5 +1,6 @@
 package com.example.NationalEquestrianFederation.repository;
 
+import com.example.NationalEquestrianFederation.model.Competition;
 import com.example.NationalEquestrianFederation.model.Rider;
 import com.example.NationalEquestrianFederation.model.enums.Gender;
 import com.example.NationalEquestrianFederation.model.enums.Licence;
@@ -26,5 +27,28 @@ public interface IRiderRepository extends JpaRepository<Rider, Integer> {
     @Modifying
     @Transactional
     void editRider(Integer id, String name, String surname, String dateOfBirth, Gender gender, Licence licence);
+
+    @Query("SELECT r.competitions FROM Rider r WHERE r.id = ?1 ")
+    List<Competition> findRiderCompetitions(Integer riderId);
+
+
+    /*@Query("INSERT INTO riders_competitions (rider_rider_id, competitions_competition_id) " +
+                "SELECT (rider_rider_id, competitions_competition_id) " +
+                "FROM riders JOIN competitions ON riders.rider_id = competitions.competition_id " +
+            "VALUES (?1, ?2) ")*/
+    @Query(value = "INSERT INTO riders_competitions(rider_rider_id, competitions_competition_id) " +
+            "VALUES ((SELECT rider_id,competition_id FROM riders " +
+            "         INNER JOIN competitions ON riders.rider_id = competitions.competition_id))", nativeQuery = true)
+    @Modifying
+    @Transactional
+    void applyRiderForCompetition(Integer riderId, Integer competitionId);
+
+    @Query("SELECT r FROM Rider r WHERE r.id = ?1")
+    Rider findRiderById(Integer riderId);
+
+    @Query("DELETE FROM Rider r WHERE r.id = ?1")
+    @Modifying
+    @Transactional
+    void temporaryDeleteRider(Integer riderId);
 
 }

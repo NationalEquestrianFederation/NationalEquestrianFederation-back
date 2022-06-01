@@ -11,4 +11,7 @@ public interface ICompetitionRepository extends JpaRepository<Competition, Integ
     @Query("SELECT c FROM Competition c WHERE ?1 BETWEEN c.startDate AND c.endDate")
     List<Competition> getCompetitionsByDate(String date);
 
+    @Query("SELECT c FROM Competition c WHERE c.id = ?1")
+    Competition findCompetitionById(Integer competitionId);
+
 }

@@ -1,7 +1,9 @@
 package com.example.NationalEquestrianFederation.service;
 
 import com.example.NationalEquestrianFederation.iservice.IRiderService;
+import com.example.NationalEquestrianFederation.model.Competition;
 import com.example.NationalEquestrianFederation.model.Rider;
+import com.example.NationalEquestrianFederation.repository.ICompetitionRepository;
 import com.example.NationalEquestrianFederation.repository.IRiderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import java.util.List;
 public class RiderService implements IRiderService {
 
     private final IRiderRepository riderRepository;
+
+    private final ICompetitionRepository competitionRepository;
 
     @Override
     public List<Rider> getRiders(Integer horseClub) {
@@ -33,5 +37,19 @@ public class RiderService implements IRiderService {
     public void editRider(Rider rider) {
         riderRepository.editRider(rider.getId(), rider.getName(), rider.getSurname() , rider.getDateOfBirth(),
                 rider.getGender(), rider.getLicence());
+    }
+
+    @Override
+    public List<Competition> getRiderCompetitions(Integer riderId) {
+        return riderRepository.findRiderCompetitions(riderId);
+    }
+
+    @Override
+    public void applyRiderForCompetition(Integer riderId, Integer competitionId) {
+        Competition competition = competitionRepository.findCompetitionById(competitionId);
+        Rider rider = riderRepository.findRiderById(riderId);
+        rider.getCompetitions().add(competition);
+        riderRepository.deleteRider(riderId);
+        riderRepository.save(rider);
     }
 }

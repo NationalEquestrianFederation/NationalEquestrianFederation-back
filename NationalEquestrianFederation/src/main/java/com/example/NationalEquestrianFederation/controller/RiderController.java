@@ -1,6 +1,8 @@
 package com.example.NationalEquestrianFederation.controller;
 
+import com.example.NationalEquestrianFederation.dto.RiderCompetitionDto;
 import com.example.NationalEquestrianFederation.iservice.IRiderService;
+import com.example.NationalEquestrianFederation.model.Competition;
 import com.example.NationalEquestrianFederation.model.Rider;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -38,6 +40,17 @@ public class RiderController {
     public ResponseEntity<String> editRider(@RequestBody Rider rider) {
         riderService.editRider(rider);
         return new ResponseEntity<>("Successfully edited", HttpStatus.OK);
+    }
+
+    @GetMapping("/competitions/{id}")
+    public ResponseEntity<List<Competition>> getRiderCompetitions(@PathVariable Integer id) {
+        return new ResponseEntity<>(riderService.getRiderCompetitions(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/applyForCompetition")
+    public ResponseEntity<String> applyForCompetition(@RequestBody RiderCompetitionDto dto) {
+        riderService.applyRiderForCompetition(dto.getRiderId(), dto.getCompetitionId());
+        return new ResponseEntity<>("Successfully applied", HttpStatus.OK);
     }
 
 }
