@@ -1,6 +1,7 @@
 package com.example.NationalEquestrianFederation.controller;
 
 import com.example.NationalEquestrianFederation.dto.HorseClubDto;
+import com.example.NationalEquestrianFederation.dto.LocationDto;
 import com.example.NationalEquestrianFederation.exceptions.ResourceConflictException;
 import com.example.NationalEquestrianFederation.iservice.IHorseClubService;
 import com.example.NationalEquestrianFederation.iservice.IRoleService;
@@ -36,7 +37,7 @@ public class HorseClubController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<HorseClub>> getHorseClubById(@PathVariable Integer id) {
+    public ResponseEntity<HorseClub> getHorseClubById(@PathVariable Integer id) {
         return new ResponseEntity<>(horseClubService.findById(id), HttpStatus.OK);
     }
 
@@ -48,7 +49,6 @@ public class HorseClubController {
     }
 
     private User registerOwner(String name) {
-
         String[] words = name.split(" ");
         StringBuilder username = new StringBuilder(words[0].toLowerCase());
         if(words.length > 1) {
@@ -74,6 +74,12 @@ public class HorseClubController {
     @PutMapping
     public ResponseEntity<String> editHorseClub(@RequestBody HorseClub horseClub) {
         horseClubService.editHorseClub(horseClub);
+        return new ResponseEntity<>("Successfully edited", HttpStatus.OK);
+    }
+
+    @PutMapping("/location")
+    public ResponseEntity<String> editHorseClubLocation(@RequestBody LocationDto location) {
+        horseClubService.editHorseClubLocation(location);
         return new ResponseEntity<>("Successfully edited", HttpStatus.OK);
     }
 

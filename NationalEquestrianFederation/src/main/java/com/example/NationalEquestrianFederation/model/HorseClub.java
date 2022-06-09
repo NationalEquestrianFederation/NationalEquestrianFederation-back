@@ -23,7 +23,13 @@ public class HorseClub {
     private String phone;
 
     @Column(name = "address")
-    private String address;
+    private String address = "";
+
+    @Column(name = "longitude")
+    private double longitude = 0;
+
+    @Column(name = "latitude")
+    private double latitude = 0;
 
     @Column(name = "email")
     private String email;
