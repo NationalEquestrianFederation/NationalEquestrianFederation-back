@@ -14,30 +14,28 @@ public class RidingSchoolOffer {
     @Id
     @Column(name = "offer_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Integer id;
 
     @Column(name = "name")
-    @Getter @Setter private String name;
+    private String name;
 
     @Column(name = "price")
-    @Getter @Setter private double price;
+    private double price;
 
     @Column(name = "start_date")
-    @Getter @Setter private String startDate;
+    private String startDate;
 
     @Column(name = "end_date")
-    @Getter @Setter private String endDate;
+    private String endDate;
 
     @Column(name = "description")
-    @Getter @Setter private String description;
+    private String description;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "horse_club", referencedColumnName = "horse_club_id")
-    @Getter @Setter private HorseClub horseClub;
+    private HorseClub horseClub;
 
     @Column(name = "is_deleted")
-    @Getter @Setter private boolean isDeleted;
+    private boolean isDeleted;
 
 }

@@ -1,8 +1,6 @@
 package com.example.NationalEquestrianFederation.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,24 +11,27 @@ import java.util.Collection;
 @Entity
 @Table(name = "users")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable, UserDetails {
 
     @Id
     @Column(name = "user_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Integer id;
 
     @Column(name = "username")
-    @Getter @Setter private String username;
+    private String username;
 
     @Column(name = "password")
-    @Getter @Setter private String password;
+    private String password;
 
     @Column(name = "is_deleted")
-    @Getter @Setter private boolean isDeleted;
+    private boolean isDeleted;
+
+    @ManyToOne(targetEntity = Role.class, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
