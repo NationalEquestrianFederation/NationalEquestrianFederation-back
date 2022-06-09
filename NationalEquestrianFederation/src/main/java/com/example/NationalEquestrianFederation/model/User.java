@@ -28,10 +28,16 @@ public class User implements Serializable, UserDetails {
     private String password;
 
     @Column(name = "is_deleted")
-    private boolean isDeleted;
+    private boolean isDeleted = false;
 
     @ManyToOne(targetEntity = Role.class, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
     private Role role;
+
+    public User(String username, String password, Role role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
