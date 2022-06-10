@@ -1,6 +1,7 @@
 package com.example.NationalEquestrianFederation.controller;
 
 import com.example.NationalEquestrianFederation.dto.HorseDto;
+import com.example.NationalEquestrianFederation.dto.NameDto;
 import com.example.NationalEquestrianFederation.iservice.IHorseClubService;
 import com.example.NationalEquestrianFederation.iservice.IHorseService;
 import com.example.NationalEquestrianFederation.mapper.HorseMapper;
@@ -28,6 +29,11 @@ public class HorseController {
     @GetMapping
     public ResponseEntity<List<Horse>> getHorses(@RequestParam Integer horseClub) {
         return new ResponseEntity<>(horseService.getHorses(horseClub), HttpStatus.OK);
+    }
+
+    @GetMapping("/horseNames")
+    public ResponseEntity<List<NameDto>> getHorseNames(@RequestParam Integer owner) {
+        return  new ResponseEntity<>(horseService.getHorseNamesByHorseClubOwner(owner), HttpStatus.OK);
     }
 
     @PostMapping

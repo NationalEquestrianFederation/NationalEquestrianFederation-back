@@ -11,11 +11,18 @@ import java.util.List;
 
 public interface IHorseClubRepository extends JpaRepository<HorseClub, Integer> {
 
+    //SELECT
+
     @Query("SELECT hc FROM HorseClub hc WHERE LOWER(hc.name) LIKE CONCAT('%',LOWER(?1),'%')")
     List<HorseClub> findAll(String name);
 
     @Query("SELECT hc FROM HorseClub hc WHERE hc.id = ?1 ")
     HorseClub getById(Integer horseId);
+
+    @Query("SELECT hc FROM HorseClub hc WHERE hc.owner.id = ?1 ")
+    HorseClub findByOwnerId(Integer ownerId);
+
+    //UPDATE
 
     @Query("UPDATE HorseClub hc " +
             "SET hc.name = ?2, hc.phone = ?3, hc.address = ?4, hc.email = ?5, hc.description = ?6 " +

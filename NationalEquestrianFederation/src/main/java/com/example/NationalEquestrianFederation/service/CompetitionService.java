@@ -15,6 +15,11 @@ public class CompetitionService implements ICompetitionService {
     private final ICompetitionRepository competitionRepository;
 
     @Override
+    public Competition getById(Integer competitionId) {
+        return competitionRepository.getById(competitionId);
+    }
+
+    @Override
     public List<Competition> getCompetitions() {
         return competitionRepository.findAll();
     }

@@ -27,6 +27,11 @@ public class HorseClubService implements IHorseClubService {
     }
 
     @Override
+    public HorseClub findByOwnerId(Integer ownerId) {
+        return horseClubRepository.findByOwnerId(ownerId);
+    }
+
+    @Override
     public HorseClub addHorseClub(HorseClub horseClub) {
         return horseClubRepository.save(horseClub);
     }

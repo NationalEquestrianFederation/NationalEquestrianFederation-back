@@ -12,6 +12,8 @@ public interface IHorseClubService {
 
     HorseClub findById(Integer horseClubId);
 
+    HorseClub findByOwnerId(Integer ownerId);
+
     HorseClub addHorseClub(HorseClub horseClub);
 
     void editHorseClub(HorseClub horseClub);

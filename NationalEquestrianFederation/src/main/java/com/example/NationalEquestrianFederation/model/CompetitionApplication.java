@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "competitions")
+@Table(name = "competitions_competitors")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CompetitionsCompetitors {
+public class CompetitionApplication {
 
     @Id
     @Column(name = "competitions_competitors_id", nullable = false)
@@ -26,5 +26,11 @@ public class CompetitionsCompetitors {
 
     @ManyToOne(targetEntity = Competition.class, optional = false, cascade = {CascadeType.MERGE})
     private Competition competition;
+
+    public CompetitionApplication(Rider rider, Horse horse, Competition competition) {
+        this.rider = rider;
+        this.horse = horse;
+        this.competition = competition;
+    }
 
 }
