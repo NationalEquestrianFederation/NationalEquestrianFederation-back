@@ -1,40 +1,44 @@
 package com.example.NationalEquestrianFederation.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "horse_clubs")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class HorseClub {
 
     @Id
     @Column(name = "horse_club_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Integer id;
 
     @Column(name = "name")
-    @Getter @Setter private String name;
+    private String name;
 
     @Column(name = "phone")
-    @Getter @Setter private String phone;
+    private String phone;
 
     @Column(name = "address")
-    @Getter @Setter private String address;
+    private String address = "";
+
+    @Column(name = "longitude")
+    private double longitude = 0;
+
+    @Column(name = "latitude")
+    private double latitude = 0;
 
     @Column(name = "email")
-    @Getter @Setter private String email;
+    private String email;
 
     @Column(name = "description")
-    @Getter @Setter private String description;
+    private String description;
 
-    @Column(name = "owner")
-    @Getter @Setter private Integer owner;
+    @OneToOne(targetEntity = User.class, optional = false, cascade = {CascadeType.MERGE})
+    private User owner;
 
 
 }

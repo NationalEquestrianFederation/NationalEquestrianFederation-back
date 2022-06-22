@@ -1,5 +1,6 @@
 package com.example.NationalEquestrianFederation.service;
 
+import com.example.NationalEquestrianFederation.dto.LocationDto;
 import com.example.NationalEquestrianFederation.iservice.IHorseClubService;
 import com.example.NationalEquestrianFederation.model.HorseClub;
 import com.example.NationalEquestrianFederation.repository.IHorseClubRepository;
@@ -21,8 +22,13 @@ public class HorseClubService implements IHorseClubService {
     }
 
     @Override
-    public Optional<HorseClub> findById(Integer horseClubId) {
-        return horseClubRepository.findById(horseClubId);
+    public HorseClub findById(Integer horseClubId) {
+        return horseClubRepository.getById(horseClubId);
+    }
+
+    @Override
+    public HorseClub findByOwnerId(Integer ownerId) {
+        return horseClubRepository.findByOwnerId(ownerId);
     }
 
     @Override
@@ -34,6 +40,12 @@ public class HorseClubService implements IHorseClubService {
     public void editHorseClub(HorseClub horseClub) {
         horseClubRepository.editHorseClub(horseClub.getId(), horseClub.getName(), horseClub.getPhone(),
                 horseClub.getAddress(), horseClub.getEmail(), horseClub.getDescription());
+    }
+
+    @Override
+    public void editHorseClubLocation(LocationDto location) {
+        horseClubRepository.editHorseClubLocation(location.getHorseClubId(), location.getAddress(),
+                location.getLongitude(), location.getLatitude());
     }
 
 }

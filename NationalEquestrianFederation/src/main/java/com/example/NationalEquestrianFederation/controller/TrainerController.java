@@ -1,6 +1,8 @@
 package com.example.NationalEquestrianFederation.controller;
 
+import com.example.NationalEquestrianFederation.dto.TrainerDto;
 import com.example.NationalEquestrianFederation.iservice.ITrainerService;
+import com.example.NationalEquestrianFederation.mapper.TrainerMapper;
 import com.example.NationalEquestrianFederation.model.Trainer;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,7 +26,8 @@ public class TrainerController {
     }
 
     @PostMapping
-    public ResponseEntity<Trainer> addTrainer(@RequestBody Trainer trainer) {
+    public ResponseEntity<Trainer> addTrainer(@RequestBody TrainerDto trainerDto) {
+        Trainer trainer = TrainerMapper.convertToTrainer(trainerDto);
         return new ResponseEntity<>(trainerService.addTrainer(trainer), HttpStatus.CREATED);
     }
 

@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface ICompetitionService {
 
+    Competition getById(Integer competitionId);
+
     List<Competition> getCompetitions();
 
     List<Competition> getCompetitionsByDate(String date);

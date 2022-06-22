@@ -5,6 +5,7 @@ import com.example.NationalEquestrianFederation.dto.JwtAuthenticationDto;
 import com.example.NationalEquestrianFederation.dto.UserDto;
 import com.example.NationalEquestrianFederation.dto.UserTokenState;
 import com.example.NationalEquestrianFederation.exceptions.ResourceConflictException;
+import com.example.NationalEquestrianFederation.iservice.IRoleService;
 import com.example.NationalEquestrianFederation.mapper.UserMapper;
 import com.example.NationalEquestrianFederation.model.User;
 import com.example.NationalEquestrianFederation.service.UserService;
@@ -35,19 +36,22 @@ public class AuthenticationController {
 
     private UserService userService;
 
+    private IRoleService roleService;
+
     @PostMapping("/login")
     public ResponseEntity<UserTokenState> createAuthenticationToken(
             @RequestBody JwtAuthenticationDto authenticationRequest, HttpServletResponse response) {
+
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 authenticationRequest.getUsername(), authenticationRequest.getPassword()));
         if(userService.findByUsername(authenticationRequest.getUsername()).isDeleted()) {
             throw new ResourceConflictException(authenticationRequest.getUsername(), "User is deleted!");
         }
-        //ubacivanje u sesiju
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);   //ubacivanje u sesiju
 
         User user = (User) authentication.getPrincipal();
-        String jwt = tokenUtils.generateToken(user.getUsername());
+        String jwt = tokenUtils.generateToken(user.getUsername(), user.getRole().getName(), user.getId());
         int expiresIn = tokenUtils.getExpiredIn();
 
         return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
@@ -66,6 +70,7 @@ public class AuthenticationController {
         User newUser = new User();
         newUser.setUsername(user.getUsername());
         newUser.setPassword(user.getPassword());
+        newUser.setRole(roleService.getByName(user.getRole()));
         return new ResponseEntity<>(userService.register(newUser), HttpStatus.CREATED);
     }
 

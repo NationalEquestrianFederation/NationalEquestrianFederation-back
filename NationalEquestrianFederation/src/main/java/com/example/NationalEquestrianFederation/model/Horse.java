@@ -1,41 +1,38 @@
 package com.example.NationalEquestrianFederation.model;
 
 import com.example.NationalEquestrianFederation.model.enums.HorseGender;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "horses")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Horse {
 
     @Id
     @Column(name = "horse_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Integer id;
 
     @Column(name = "name")
-    @Getter @Setter private String name;
+    private String name;
 
     @Column(name = "year_of_birth")
-    @Getter @Setter private Integer yearOfBirth;
+    private Integer yearOfBirth;
 
     @Column(name = "owner")
-    @Getter @Setter private String owner;
+    private String owner;
 
     @Column(name = "gender")
-    @Getter @Setter private HorseGender gender;
+    private HorseGender gender;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "horse_club", referencedColumnName = "horse_club_id")
-    @Getter @Setter private HorseClub horseClub;
+    @ManyToOne(optional = false, targetEntity = HorseClub.class, cascade = CascadeType.MERGE)
+    private HorseClub horseClub;
 
     @Column(name= "is_deleted")
-    @Getter @Setter private boolean isDeleted;
+    private boolean isDeleted = false;
 
 }
