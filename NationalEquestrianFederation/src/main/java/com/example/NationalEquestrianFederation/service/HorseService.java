@@ -28,7 +28,7 @@ public class HorseService implements IHorseService {
 
     @Override
     public List<NameDto> getHorseNamesByHorseClubOwner(Integer ownerId) {
-        List<Horse> horses = horseRepository.findHorsesByHorseClubOwner(ownerId);
+        List<Horse> horses = horseRepository.findHorsesByHorseClubUser(ownerId);
         List<NameDto> horseNames = new ArrayList<>();
         for(Horse horse : horses) {
             horseNames.add(new NameDto(horse.getId(), horse.getName()));

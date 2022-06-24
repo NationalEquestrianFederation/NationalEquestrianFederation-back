@@ -10,8 +10,7 @@ public class HorseClubMapper {
         HorseClub horseClub = new HorseClub();
         horseClub.setName(dto.getName());
         horseClub.setEmail(dto.getEmail());
-        horseClub.setAddress("");
-        horseClub.setPhone(dto.getPhone());
+        horseClub.setPhoneNumber(dto.getPhoneNumber());
         horseClub.setDescription(dto.getDescription());
         return horseClub;
     }

@@ -31,8 +31,7 @@ public class RidingSchoolOffer {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "horse_club", referencedColumnName = "horse_club_id")
+    @ManyToOne(optional = false, targetEntity = HorseClub.class, cascade = CascadeType.MERGE)
     private HorseClub horseClub;
 
     @Column(name = "is_deleted")

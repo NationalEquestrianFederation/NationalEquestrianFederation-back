@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "competitions_competitors")
+@Table(name = "competition_application")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompetitionApplication {
 
     @Id
-    @Column(name = "competitions_competitors_id", nullable = false)
+    @Column(name = "application_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

@@ -20,8 +20,8 @@ public interface IRiderRepository extends JpaRepository<Rider, Integer> {
     @Query("SELECT r FROM Rider r WHERE (?1 = 0 OR r.horseClub = ?1) AND r.isDeleted = false ")
     List<Rider> findRidersByHorseClub(Integer horseClub);
 
-    @Query("SELECT r FROM Rider r WHERE r.horseClub.owner.id = ?1 ")
-    List<Rider> findRidersByHorseClubOwner(Integer ownerId);
+    @Query("SELECT r FROM Rider r WHERE r.horseClub.user.id = ?1 ")
+    List<Rider> findRidersByHorseClubUser(Integer ownerId);
 
     //UPDATE
 

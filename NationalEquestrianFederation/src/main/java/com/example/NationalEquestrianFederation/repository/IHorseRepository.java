@@ -19,8 +19,8 @@ public interface IHorseRepository extends JpaRepository<Horse, Integer> {
     @Query("SELECT h FROM Horse h WHERE (?1 = 0 OR h.horseClub = ?1) AND h.isDeleted = false ")
     List<Horse> findHorsesByHorseClub(Integer horseClub);
 
-    @Query("SELECT h FROM Horse h WHERE h.horseClub.owner.id = ?1 ")
-    List<Horse> findHorsesByHorseClubOwner(Integer ownerId);
+    @Query("SELECT h FROM Horse h WHERE h.horseClub.user.id = ?1 ")
+    List<Horse> findHorsesByHorseClubUser(Integer ownerId);
 
     //UPDATE
 

@@ -13,7 +13,6 @@ public class NewsMapper {
         news.setTitle(dto.getTitle());
         news.setContent(dto.getContent());
         news.setNewsType(NewsType.valueOf(dto.getNewsType()));
-        news.setPostedBy(dto.getPostedBy());
         news.setDate(new Date());
         return news;
     }

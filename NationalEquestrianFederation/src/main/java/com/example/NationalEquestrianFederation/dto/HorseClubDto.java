@@ -13,7 +13,9 @@ public class HorseClubDto {
 
     private String email;
 
-    private String phone;
+    private String phoneNumber;
+
+    private String webSite;
 
     private String description;
 

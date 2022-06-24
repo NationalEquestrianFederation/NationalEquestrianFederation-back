@@ -13,6 +13,10 @@ public class LocationDto {
 
     private String address;
 
+    private String city;
+
+    private String country;
+
     private double latitude;
 
     private double longitude;

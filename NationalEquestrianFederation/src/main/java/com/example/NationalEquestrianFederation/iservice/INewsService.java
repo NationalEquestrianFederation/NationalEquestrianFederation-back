@@ -9,6 +9,6 @@ public interface INewsService {
 
     List<News> findNewsByType(NewsType newsType);
 
-    News addNews(News newNews);
+    News addNews(News news, Integer user);
 
 }

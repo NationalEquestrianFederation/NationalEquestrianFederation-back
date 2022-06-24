@@ -28,9 +28,9 @@ public class NewsController {
     }
 
     @PostMapping()
-    public ResponseEntity<News> addNews(@RequestBody NewsDto newNews) {
-        News news = NewsMapper.convertToNews(newNews);
-        return new ResponseEntity<>(newsService.addNews(news), HttpStatus.CREATED);
+    public ResponseEntity<News> addNews(@RequestBody NewsDto dto) {
+        News news = NewsMapper.convertToNews(dto);
+        return new ResponseEntity<>(newsService.addNews(news, dto.getPostedBy()), HttpStatus.CREATED);
     }
 
 }

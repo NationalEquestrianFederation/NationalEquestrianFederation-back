@@ -29,6 +29,9 @@ public class Horse {
     @Column(name = "gender")
     private HorseGender gender;
 
+    @Column(name = "image", columnDefinition="TEXT")
+    private String image;
+
     @ManyToOne(optional = false, targetEntity = HorseClub.class, cascade = CascadeType.MERGE)
     private HorseClub horseClub;
 

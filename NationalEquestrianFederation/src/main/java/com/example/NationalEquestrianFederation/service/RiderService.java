@@ -28,7 +28,7 @@ public class RiderService implements IRiderService {
 
     @Override
     public List<NameDto> getRiderNamesByHorseClubOwner(Integer ownerId) {
-        List<Rider> riders = riderRepository.findRidersByHorseClubOwner(ownerId);
+        List<Rider> riders = riderRepository.findRidersByHorseClubUser(ownerId);
         List<NameDto> riderNames = new ArrayList<>();
         for(Rider rider : riders) {
             String name = rider.getName() + " " + rider.getSurname();

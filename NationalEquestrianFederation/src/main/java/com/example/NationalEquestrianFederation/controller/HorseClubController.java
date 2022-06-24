@@ -2,7 +2,6 @@ package com.example.NationalEquestrianFederation.controller;
 
 import com.example.NationalEquestrianFederation.dto.HorseClubDto;
 import com.example.NationalEquestrianFederation.dto.LocationDto;
-import com.example.NationalEquestrianFederation.exceptions.ResourceConflictException;
 import com.example.NationalEquestrianFederation.iservice.IHorseClubService;
 import com.example.NationalEquestrianFederation.iservice.IRoleService;
 import com.example.NationalEquestrianFederation.iservice.IUserService;
@@ -16,8 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/horseClubs", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -44,7 +41,7 @@ public class HorseClubController {
     @PostMapping
     public ResponseEntity<HorseClub> addHorseClub(@RequestBody HorseClubDto horseClubDto) {
         HorseClub horseClub = HorseClubMapper.convertToHorseClub(horseClubDto);
-        horseClub.setOwner(registerOwner(horseClub.getName()));
+        horseClub.setUser(registerOwner(horseClub.getName()));
         return new ResponseEntity<>(horseClubService.addHorseClub(horseClub), HttpStatus.CREATED);
     }
 

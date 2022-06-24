@@ -1,35 +1,36 @@
 package com.example.NationalEquestrianFederation.model;
 
 import com.example.NationalEquestrianFederation.model.enums.NewsType;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "news")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class News {
 
     @Id
     @Column(name = "news_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter private Integer id;
+    private Integer id;
 
     @Column(name = "title")
-    @Getter @Setter private String title;
+    private String title;
 
     @Column(name = "content")
-    @Getter @Setter private String content;
+    private String content;
 
     @Column(name = "news_type")
-    @Getter @Setter private NewsType newsType;
+    private NewsType newsType;
 
-    @Column(name = "posted_by")
-    @Getter @Setter private Integer postedBy;
+    @ManyToOne(optional = false, targetEntity = Organization.class, cascade = CascadeType.MERGE)
+    private Organization organization;
 
     @Column(name = "date")
-    @Getter @Setter private Date date;
+    private Date date;
 
 }
